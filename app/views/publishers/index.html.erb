@@ -1,0 +1,12 @@
+<% provide(:title, t("publishers.index.name_page")) %>
+<h1><%= t("publishers.index.name_page") %></h1>
+
+<%= link_to t("publishers.index.text_button"), new_publisher_path %>
+
+<%= will_paginate %>
+
+<ul class="publishers">
+  <%= render @publishers %>
+</ul>
+
+<%= will_paginate %>

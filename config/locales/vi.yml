@@ -1,0 +1,151 @@
+vi:
+  text_delete: "Xóa"
+  text_edit: "Chỉnh sửa"
+  text_flash_create: "Tạo thành công!"
+  text_flash_update: "Cập nhật thành công!"
+  text_flash_delete: "Xóa thành công!"
+  text_flash_danger_1: "Email hoặc mật khẩu không chính xác!"
+  text_flash_danger_2: "Hãy đăng nhập trước khi thực hiện chức năng này!"
+  text_flash_info: "Thứ bạn muốn tìm không tồn tại!"
+
+  users:
+    edit:
+      name_page: "Chỉnh sửa cá nhân"
+      text_page: "Cập nhật thông tin cá nhân"
+      text_button: "Cập nhật thay đổi!"
+    index:
+      name_page: "Danh sách thành viên"
+    new:
+      name_page: "Đăng ký tài khoản"
+      text_button: "Tạo tài khoản!"
+
+  static_pages:
+    home:
+      name_page: "Trang chủ"
+      text_signup: "Đăng ký tài khoản ngay!"
+      text_page: "Chào mừng đến với Library Management App"
+    about:
+      name_page: "Thông tin về chúng tôi"
+
+  sessions:
+    new:
+      name_page: "Đăng nhập"
+      email: "Email:"
+      password: "Mật khẩu:"
+      text_button: "Đăng nhập!"
+      text_remember: "Ghi nhớ tài khoản trên máy tính này!"
+
+  publishers:
+    edit:
+      name_page: "Chỉnh sửa nhà xuất bản"
+      text_button: "Cập nhật nhà xuất bản!"
+      text_page: "Cập nhật thông tin nhà xuất bản"
+    index:
+      name_page: "Danh sách nhà xuất bản"
+      text_button: "Tạo mới nhà xuất bản"
+    new:
+      name_page: "Tạo mới nhà xuất bản"
+      text_button: "Tạo mới nhà xuất bản!"
+    show:
+      text_name: "Tên nhà xuất bản:"
+      text_address: "Địa chỉ:"
+
+  categories:
+    edit:
+      name_page: "Chỉnh sửa thể loại sách"
+      text_button: "Cập nhật thể loại sách!"
+      text_page: "Cập nhật thông tin thể loại sách"
+    index:
+      name_page: "Danh sách các thể loại sách"
+      text_button: "Tạo mới thể loại sách"
+    new:
+      name_page: "Tạo mới thể loại sách"
+      text_button: "Tạo mới thể loại sách!"
+    show:
+      text_name: "Tên thể loại:"
+
+  authors:
+    edit:
+      name_page: "Chỉnh sửa tác giả"
+      text_button: "Cập nhật thông tin tác giả!"
+      text_page: "Cập nhật thông tin về tác giả"
+    index:
+      name_page: "Danh sách tác giả"
+      text_button: "Thêm tác giả"
+    new:
+      name_page: "Tạo mới tác giả"
+      text_button: "Tạo mới tác giả!"
+    show:
+      text_name: "Tên tác giả:"
+
+  books:
+    edit:
+      name_page: "Chỉnh sửa sách"
+      text_button: "Cập nhật thông tin sách!"
+      text_page: "Cập nhật thông tin về sách"
+    index:
+      name_page: "Sách"
+      text_button: "Thêm sách"
+    new:
+      name_page: "Tạo mới sách"
+      text_button: "Tạo mới sách!"
+    show:
+      text_name: "Tên sách:"
+      text_status: "Tình trạng sách:"
+      text_content: "Nội dung:"
+      text_pages: "Số trang sách:"
+      text_number_of: "Số lượng:"
+      text_author: "Tác giả:"
+      text_category: "Thể loại:"
+      text_publisher: "Nhà xuất bản:"
+
+  layouts:
+    header:
+      text_logo: "Library Management App"
+      text_home: "Trang chủ"
+      text_user: "Thành viên"
+      text_book: "Sách"
+      text_author: "Tác giả"
+      text_category: "Thể loại"
+      text_publisher: "Nhà xuất bản"
+      text_account: "Tài khoản"
+      text_profile: "Thông tin cá nhân"
+      text_setting: "Cập nhật thông tin"
+      text_logout: "Thoát"
+      text_login: "Đăng nhập"
+
+  activerecord:
+    models:
+      user: "User"
+      publisher: "Publisher"
+      category: "Category"
+      book: "Book"
+      author: "Author"
+    attributes:
+      user:
+        name: "Tên thành viên:"
+        email: "Email:"
+        content: "Tự thuật:"
+        level: "Cấp độ:"
+        password: "Mật khẩu:"
+        password_confirmation: "Xác nhận mật khẩu:"
+      publisher:
+        name: "Tên nhà xuất bản:"
+        address: "Địa chỉ:"
+        content: "Giới thiệu:"
+      category:
+        name: "Tên thể loại:"
+        content: "Nội dung thể loại:"
+      author:
+        name: "Tên tác giả:"
+        nickname: "Bút danh:"
+        content: "Tự thuật:"
+      book:
+        name: "Tên sách:"
+        status: "Tình trạng sách:"
+        content: "Nội dung:"
+        pages: "Số trang:"
+        number_of: "Số lượng:"
+        author: "Tác giả:"
+        category: "Thể loại:"
+        publisher: "Nhà xuất bản:"
