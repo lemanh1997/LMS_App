@@ -2,6 +2,7 @@
 <html>
   <head>
     <title><%= yield(:title) %></title>
+    <title>LMSApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,5 +20,6 @@
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>
+    <%= yield %>
   </body>
 </html>
