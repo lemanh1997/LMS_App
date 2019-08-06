@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ctran/annotate_models.git
+  revision: 111640d077836ced23cfffb882c93e40968ab9d9
+  specs:
+    annotate (2.7.5)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 13.0)
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,6 +60,18 @@ GEM
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.28.0)
+    autoprefixer-rails (9.6.1)
+      execjs
+    bcrypt (3.1.13)
+    bindex (0.8.1)
+    bootsnap (1.4.4)
+      msgpack (~> 1.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
+    builder (3.2.3)
+    byebug (11.0.1)
+    capybara (3.27.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -101,6 +120,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.1)
+    msgpack (1.3.0)
     nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -126,6 +146,7 @@ GEM
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.1.0)
+    rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     railties (5.2.3)
       actionpack (= 5.2.3)
@@ -151,6 +172,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.0.1)
+      ffi (~> 1.9)
+      rake
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -192,6 +216,10 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  annotate!
+  bcrypt (~> 3.1.7)
+  bootsnap (>= 1.1.0)
+  bootstrap-sass (> 3.3.7)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
