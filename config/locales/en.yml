@@ -30,4 +30,153 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  text_delete: "Delete"
+  text_edit: "Edit"
+  create_complete: "Create Complete!"
+  update_complete: "Update Complete!"
+  delete_complete: "Delete Complete!"
+  invalid_email_or_password: "Invalid email or password!"
+  request_login: "Please Login!"
+  no_exits: "Don't Exits!"
+
+  users:
+    edit:
+      name_page: "Edit User"
+      text_page: "Update your profile"
+      text_button: "Save Change!"
+    index:
+      name_page: "All Users"
+    new:
+      name_page: "Sign Up"
+      text_button: "Create Account!"
+
+  static_pages:
+    home:
+      name_page: "Home"
+      text_signup: "Sign Up Now!"
+      text_page: "Welcome to the Library Management App"
+    about:
+      name_page: "Abouts"
+
+  sessions:
+    new:
+      name_page: "LogIn"
+      email: "Email:"
+      password: "Password:"
+      text_button: "Log in"
+      text_remember: "Remember me on this computer!"
+
+  publishers:
+    edit:
+      name_page: "Edit Publisher"
+      text_button: "Update Publisher!"
+      text_page: "Update Publisher Profile"
+    index:
+      name_page: "All Publishers"
+      text_button: "Create Publisher"
+    new:
+      name_page: "Create Publisher"
+      text_button: "Create Publisher!"
+    show:
+      text_name: "Name:"
+      text_address: "Address:"
+
+  categories:
+    edit:
+      name_page: "Edit Category"
+      text_button: "Update Category!"
+      text_page: "Update Category Profile"
+    index:
+      name_page: "All Categories"
+      text_button: "Create Category"
+    new:
+      name_page: "Create Category"
+      text_button: "Create Category!"
+    show:
+      text_name: "Name:"
+
+  authors:
+    edit:
+      name_page: "Edit Author"
+      text_button: "Update Author!"
+      text_page: "Update Author Profile"
+    index:
+      name_page: "All Authors"
+      text_button: "Create Author"
+    new:
+      name_page: "Create Author"
+      text_button: "Create Author!"
+    show:
+      text_name: "Name:"
+
+  books:
+    edit:
+      name_page: "Edit Book"
+      text_button: "Update Book!"
+      text_page: "Update Book Profile"
+    index:
+      name_page: "All Books"
+      text_button: "Create Book"
+    new:
+      name_page: "Create Book"
+      text_button: "Create Book!"
+    show:
+      text_name: "Name:"
+      text_status: "Status:"
+      text_content: "Content:"
+      text_pages: "Pages:"
+      text_number_of: "Number Of:"
+      text_author: "Author:"
+      text_category: "Category:"
+      text_publisher: "Publisher:"
+
+  layouts:
+    header:
+      text_logo: "Library Management App"
+      text_home: "Home"
+      text_user: "Users"
+      text_book: "Books"
+      text_author: "Authors"
+      text_category: "Categories"
+      text_publisher: "Publishers"
+      text_account: "Account"
+      text_profile: "Profile"
+      text_setting: "Setting"
+      text_logout: "Log Out"
+      text_login: "Login"
+
+  activerecord:
+    models:
+      user: "User"
+      publisher: "Publisher"
+      category: "Category"
+      book: "Book"
+      author: "Author"
+    attributes:
+      user:
+        name: "Name:"
+        email: "Email:"
+        content: "Content:"
+        level: "Level:"
+        password: "Password:"
+        password_confirmation: "Password Confirmation:"
+      publisher:
+        name: "Name:"
+        address: "Address:"
+        content: "Content:"
+      category:
+        name: "Name:"
+        content: "Content:"
+      author:
+        name: "Name:"
+        nickname: "NickName:"
+        content: "Content:"
+      book:
+        name: "Name:"
+        status: "Status:"
+        content: "Content:"
+        pages: "Pages:"
+        number_of: "Number Of:"
+        author: "Author:"
+        category: "Category:"
+        publisher: "Publisher:"

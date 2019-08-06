@@ -1,7 +1,11 @@
 <footer class="footer">
+  <small>
+    <%= link_to image_tag("en.png", alt: "English"), locale:"en" %>
+    <%= link_to image_tag("vi.png", alt: "Việt Nam"), locale:"vi" %>
+  </small>
   <nav>
     <ul>
-      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to t("static_pages.about.name_page"), about_path %></li>
     </ul>
   </nav>
 </footer>
