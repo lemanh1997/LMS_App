@@ -1,12 +1,10 @@
 <% provide(:title, @publisher.name) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        Name: <%= @publisher.name %>
-      </h1>
+    <section class="publisher_info">
+      <h1>Name: <%= @publisher.name %></h1>
       <p>Address: <%= @publisher.address %></p>
-      <span>&emsp;&emsp;&emsp;<%= @publisher.content unless @publisher.content.nil? %></span>
+      <span>&emsp;&emsp;&emsp;<%= @publisher.content if @publisher.content.present? %></span>
     </section>
   </aside>
 </div>
