@@ -1,10 +1,11 @@
 class PublishersController < ApplicationController
+  before_action :set_publisher, only: :show
+  
   def new
     @publisher = Publisher.new
   end
 
   def show
-    @publisher = Publisher.find(params[:id])
   end
 
   def create
@@ -20,6 +21,10 @@ class PublishersController < ApplicationController
   private
   def publisher_params
     params.require(:publisher).permit(:name, :address, :content)
+  end
+
+  def set_publisher
+    @publisher = Publisher.find(params[:id]) 
   end
 
 end
