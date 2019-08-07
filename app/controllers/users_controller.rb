@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:success] = "Create account complete!"
       redirect_to @user
     else
-      render "new"
+      render :new
     end
   end
 

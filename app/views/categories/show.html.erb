@@ -1,0 +1,9 @@
+<% provide(:title, @category.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="category_info">
+      <h1>Name: <%= @category.name %></h1>
+      <span>&emsp;&emsp;&emsp;<%= @category.content if @category.content.present? %></span>
+    </section>
+  </aside>
+</div>
