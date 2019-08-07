@@ -1,26 +1,25 @@
 class CategoriesController < ApplicationController
   def new
-  	@category = Category.new
+    @category = Category.new
   end
 
   def show
-  	@category = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def create
-  	@category = Category.new(category_params)
-  	if(@category.save)
-  		flash[:success] = "Create category complete!"
-  		redirect_to @category
-  	else
-  		render 'new'
-  	end
+    @category = Category.new(category_params)
+    if(@category.save)
+      flash[:success] = "Create category complete!"
+      redirect_to @category
+    else
+      render :new
+    end
   end
 
   private
-
-  	def category_params
-  		params.require(:category).permit(:name, :content)
-  	end
+  def category_params
+    params.require(:category).permit(:name, :content)
+  end
 
 end
