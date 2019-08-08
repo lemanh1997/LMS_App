@@ -4,7 +4,7 @@
     <section class="author_info">
       <h1>Name: <%= @author.name %></h1>
       <span>(<%= @author.nickname %>)</span>
-      <span>&emsp;&emsp;&emsp;<%= @author.content if !@author.content.nil? %></span>
+      <span>&emsp;&emsp;&emsp;<%= @author.content if @author.content.present? %></span>
     </section>
   </aside>
 </div>
