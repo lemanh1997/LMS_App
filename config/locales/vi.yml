@@ -1,6 +1,8 @@
 vi:
   text_delete: "Xóa"
   text_edit: "Chỉnh sửa"
+  text_comment: "Bình luận"
+  text_post: "Đăng"
   text_flash_create: "Tạo thành công!"
   text_flash_update: "Cập nhật thành công!"
   text_flash_delete: "Xóa thành công!"

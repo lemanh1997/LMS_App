@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   belongs_to :author
   belongs_to :category
   belongs_to :publisher
+  has_many :comments, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
   validates :name, presence: true, length: { maximum: 100 }, uniqueness: { case_sensitive: false }

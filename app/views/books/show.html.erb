@@ -12,4 +12,16 @@
       <h1><%= t("books.show.text_publisher") %> <%= @book.category.name %></h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <section class="comment_form">
+      <%= render "shared/comment_form" %>
+    </section>
+    <% if @book.comments.any? %>
+      <h3><%= t(:text_comment) %> (<%= @book.comments.count %>)</h3>
+      <ol class="comments">
+        <%= render @comments %>
+      </ol>
+      <%= will_paginate @comments %>
+    <% end %>
+  </div>
 </div>

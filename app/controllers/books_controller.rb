@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
+  before_action :logged_in_user
   before_action :admin_user, only: [:create, :edit, :update, :destroy]
 
   def new
@@ -8,6 +8,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @comments = @book.comments.paginate(page: params[:page])
+    @comment = @book.comments.build if logged_in?
   end
 
   def index
@@ -19,7 +21,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    if(@book.save)
+    if @book.save
       flash[:success] = t(:text_flash_create)
       redirect_to books_path
     else
@@ -28,7 +30,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    if(@book.update_attributes(book_params))
+    if @book.update_attributes(book_params)
       flash[:success] = t(:text_flash_update)
       redirect_to books_path
     else

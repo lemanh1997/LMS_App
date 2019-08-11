@@ -59,3 +59,10 @@ end
                   author_id: author_id, category_id: category_id,
                   publisher_id: publisher_id)
 end
+
+books = Book.order(:created_at).take(6)
+10.times do
+  content = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  user_id = rand(1..10)
+  books.each { |book| book.comments.create!(content: content, user_id: user_id) }
+end

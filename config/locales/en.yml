@@ -32,11 +32,14 @@
 en:
   text_delete: "Delete"
   text_edit: "Edit"
+  text_comment: "Comment"
+  text_post: "Post"
   text_flash_create: "Create Complete!"
   text_flash_update: "Update Complete!"
   text_flash_delete: "Delete Complete!"
   text_flash_danger_1: "Invalid email or password!"
   text_flash_danger_2: "Please Login!"
+  text_flash_danger_3: "Don't create!"
   text_flash_info: "Don't Exits!"
 
   users:

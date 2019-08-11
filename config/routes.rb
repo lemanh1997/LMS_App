@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :publishers
     resources :authors
     resources :books
+    resources :comments, only: [:create, :destroy]
   end
 end

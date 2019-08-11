@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessor :remember_token
+  has_many :comments, dependent: :destroy
 
   before_save :email_downcase
   validates :name,  presence: true, length: { maximum: 50 }
@@ -17,7 +18,7 @@ class User < ApplicationRecord
     end
 
     def new_token
-      SecureRandom.urldsafe_base64
+      SecureRandom.urlsafe_base64
     end
   end
 
