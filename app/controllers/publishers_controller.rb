@@ -9,20 +9,20 @@ class PublishersController < ApplicationController
   end
 
   def show
-    @books = @publisher.books.paginate(page: params[:page])
+    @books = @publisher.books.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
   end
 
   def index
-    @publishers = Publisher.paginate(page: params[:page])
+    @publishers = Publisher.paginate(page: params[:page], per_page: 5)
   end
   
   def create
     @publisher = Publisher.new(publisher_params)
     if @publisher.save
-      flash[:success] = t(:text_flash_create)
+      flash[:success] = t(:create_complete)
       redirect_to @publisher
     else
       render :new
@@ -31,7 +31,7 @@ class PublishersController < ApplicationController
 
   def update
     if @publisher.update_attributes(publisher_params)
-      flash[:success] = t(:text_flash_update)
+      flash[:success] = t(:update_complete)
       redirect_to publishers_path
     else
       render :edit
@@ -40,7 +40,7 @@ class PublishersController < ApplicationController
 
   def destroy
     Publisher.find(params[:id]).destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to publishers_path
   end
 
@@ -52,14 +52,12 @@ class PublishersController < ApplicationController
   def set_publisher
     @publisher = Publisher.find_by(id: params[:id])
     return if @publisher
-    flash[:info] = t(:text_flash_info)
+    flash[:info] = t(:no_exits)
     redirect_to publishers_path 
   end
 
   def before_destroy
     @publisher = Publisher.find(params[:id])
-    @publisher.books.each do |book|
-      book.update_before_destroy_publisher
-    end
+    @publisher.update_book_publisher
   end
 end

@@ -6,4 +6,8 @@ class Category < ApplicationRecord
   def name_downcase
     self.name = name.downcase
   end
+
+  def update_book_category
+    self.books.each(&:update_before_destroy_category)
+  end
 end

@@ -9,4 +9,8 @@ class Author < ApplicationRecord
     self.name = name.downcase
     self.nickname = nickname.downcase
   end
+
+  def update_book_author
+    self.books.each(&:update_before_destroy_author)
+  end
 end

@@ -1,11 +1,11 @@
 <% provide(:title, t("categories.index.name_page")) %>
 <h1><%= t("categories.index.name_page") %></h1>
 
+<% if current_user.admin? %>
 <%= link_to t("categories.index.text_button"), new_category_path%>
+<% end %>
 
-<%= will_paginate %>
-
-<ul class="categories">
+<ul class="objects">
   <%= render @categories %>
 </ul>
 

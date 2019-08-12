@@ -8,12 +8,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @comments = @book.comments.paginate(page: params[:page])
-    @comment = @book.comments.build if logged_in?
+    @comments = @book.comments.paginate(page: params[:page], per_page: 5)
+    @comment = @book.comments.build
   end
 
   def index
-    @books = Book.paginate(page: params[:page])
+    @books = Book.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
@@ -22,7 +22,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      flash[:success] = t(:text_flash_create)
+      flash[:success] = t(:create_complete)
       redirect_to books_path
     else
       render :new
@@ -31,7 +31,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update_attributes(book_params)
-      flash[:success] = t(:text_flash_update)
+      flash[:success] = t(:update_complete)
       redirect_to books_path
     else
       render :edit
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
 
   def destroy
     Book.find(params[:id]).destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to books_path
   end
 
@@ -52,7 +52,7 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find_by(id: params[:id])
     return if @book
-    flash[:info] = t(:text_flash_info)
+    flash[:info] = t(:no_exits)
     redirect_to books_path
   end
 end

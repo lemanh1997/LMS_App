@@ -8,4 +8,8 @@ class Publisher < ApplicationRecord
     self.name = name.downcase
     self.address = address.downcase 
   end
+
+  def update_book_publisher
+    self.books.each(&:update_before_destroy_publisher)
+  end
 end

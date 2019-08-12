@@ -15,8 +15,12 @@
       <%= f.label :content %>
       <%= f.text_field :content, class: "form-control" %>
 
-      <%= f.label :level %>
-      <%= f.number_field :level, in: 0..5, step: :any, class: "form-control" %>
+      <% if current_user.admin? %>
+        <%= f.label :level %>
+        <%= f.number_field :level, in: 0..5, step: :any, class: "form-control" %>
+      <% else %>
+        <%= hidden_field_tag :level, @user.level %>
+      <% end %>
 
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control" %>

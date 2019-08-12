@@ -3,12 +3,14 @@ vi:
   text_edit: "Chỉnh sửa"
   text_comment: "Bình luận"
   text_post: "Đăng"
-  text_flash_create: "Tạo thành công!"
-  text_flash_update: "Cập nhật thành công!"
-  text_flash_delete: "Xóa thành công!"
-  text_flash_danger_1: "Email hoặc mật khẩu không chính xác!"
-  text_flash_danger_2: "Hãy đăng nhập trước khi thực hiện chức năng này!"
-  text_flash_info: "Thứ bạn muốn tìm không tồn tại!"
+  text_error: "Kích thước file nhỏ hơn 10MB"
+  create_complete: "Tạo thành công!"
+  update_complete: "Cập nhật thành công!"
+  delete_complete: "Xóa thành công!"
+  invalid_email_or_password: "Email hoặc mật khẩu không chính xác!"
+  request_login: "Hãy đăng nhập trước khi thực hiện chức năng này!"
+  create_fails: "Tạo không thành công!"
+  no_exits: "Thứ bạn muốn tìm không tồn tại!"
 
   users:
     edit:

@@ -1,7 +1,7 @@
 <% provide(:title, @category.name) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="category_info">
+    <section class="object_info">
       <h1><%= t("categories.show.text_name") %> <%= @category.name %></h1>
       <span>&emsp;&emsp;&emsp;<%= @category.content if @category.content.present? %></span>
     </section>
@@ -9,7 +9,7 @@
   <div class="col-md-8">
     <% if @category.books.any? %>
       <h3><%= t("layouts.header.text_book") %> (<%= @category.books.count %>)</h3>
-      <ol class="books"><%= render @books %></ol>
+      <ol class="objects"><%= render @books %></ol>
       <%= will_paginate @books %>
     <% end %>
   </div>

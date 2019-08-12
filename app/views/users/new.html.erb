@@ -19,6 +19,8 @@
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
 
+      <%= hidden_field_tag :level, 0 %>
+
       <%= f.submit yield(:button_name), class: "btn btn-primary" %>
     <% end %>
   </div>

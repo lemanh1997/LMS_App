@@ -34,13 +34,14 @@ en:
   text_edit: "Edit"
   text_comment: "Comment"
   text_post: "Post"
-  text_flash_create: "Create Complete!"
-  text_flash_update: "Update Complete!"
-  text_flash_delete: "Delete Complete!"
-  text_flash_danger_1: "Invalid email or password!"
-  text_flash_danger_2: "Please Login!"
-  text_flash_danger_3: "Don't create!"
-  text_flash_info: "Don't Exits!"
+  text_error: "Should be less than 10MB"
+  create_complete: "Create Complete!"
+  update_complete: "Update Complete!"
+  delete_complete: "Delete Complete!"
+  invalid_email_or_password: "Invalid email or password!"
+  request_login: "Please Login!"
+  create_fails: "Don't create!"
+  no_exits: "Don't Exits!"
 
   users:
     edit:

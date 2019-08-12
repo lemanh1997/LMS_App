@@ -1,7 +1,7 @@
 <% provide(:title, @author.name) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="author_info">
+    <section class="object_info">
       <h1><%= t("authors.show.text_name") %> <%= @author.name %></h1>
       <span>(<%= @author.nickname %>)</span>
       <span>&emsp;&emsp;&emsp;<%= @author.content if @author.content.present? %></span>
@@ -10,7 +10,7 @@
   <div class="col-md-8">
     <% if @author.books.any? %>
       <h3><%= t("layouts.header.text_book") %> (<%= @author.books.count %>)</h3>
-      <ol class="books"><%= render @books %></ol>
+      <ol class="objects"><%= render @books %></ol>
       <%= will_paginate @books %>
     <% end %>
   </div>

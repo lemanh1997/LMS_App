@@ -17,14 +17,14 @@
   <%= f.number_field :number_of, min: 0, step: :any, class: "form-control" %>
 
   <%= f.label :author %>
-  <%= select("book", "author_id", Author.all.collect{   |a| [a.name, a.id]
-  }, { prompt: "Select Author "}, class: "form-control") %>
+  <%= f.select "author_id", Author.all.collect{   |a| [a.name, a.id]
+  }, { prompt: "Select Author "}, class: "form-control" %>
 
   <%= f.label :category %>
-  <%= select("book", "category_id", Category.all.collect{|a| [a.name, a.id]}, { prompt: "Select Category "}, class: "form-control") %>
+  <%= f.select "category_id", Category.all.collect{|a| [a.name, a.id]}, { prompt: "Select Category "}, class: "form-control" %>
 
   <%= f.label :publisher %>
-  <%= select("book", "publisher_id", Publisher.all.collect{ |a| [a.name, a.id] }, { prompt: "Select Publisher "}, class: "form-control") %>
+  <%= f.select "publisher_id", Publisher.all.collect{ |a| [a.name, a.id] }, { prompt: "Select Publisher "}, class: "form-control" %>
 
   <%= f.submit yield(:button_name), class: "btn btn-primary" %>
 <% end %>

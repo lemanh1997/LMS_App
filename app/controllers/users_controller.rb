@@ -9,11 +9,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @comments = @user.comments.paginate(page: params[:page])
+    # @comments = @user.comments.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   def edit
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] =t(:text_flash_create)
+      flash[:success] =t(:create_complete)
       redirect_to @user
     else
       render :new
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = t(:text_flash_update)
+      flash[:success] = t(:update_complete)
       redirect_to @user
     else
       render :edit
@@ -41,13 +42,13 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to users_path
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :level, :password, :password_confirmation)
   end
 
   def correct_user
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(id: params[:id])
     return if @user
-    flash[:info] = t(:text_flash_info)
+    flash[:info] = t(:no_exits)
     redirect_to users_path
   end
 end
