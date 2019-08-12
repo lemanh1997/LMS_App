@@ -34,6 +34,7 @@ en:
   text_edit: "Edit"
   text_comment: "Comment"
   text_post: "Post"
+  text_error: "Should be less than 10MB"
   text_flash_create: "Create Complete!"
   text_flash_update: "Update Complete!"
   text_flash_delete: "Delete Complete!"

@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 
   def show
     @comments = @book.comments.paginate(page: params[:page])
-    @comment = @book.comments.build if logged_in?
+    @comment = @book.comments.build
   end
 
   def index

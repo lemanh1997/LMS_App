@@ -32,11 +32,12 @@ gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem 'faker'
+gem 'carrierwave'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -64,6 +65,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+end
+
+group :production do
+  gem 'fog', '1.42'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
