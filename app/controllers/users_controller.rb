@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     # @comments = @user.comments.paginate(page: params[:page])
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = @user.feed.paginate(page: params[:page])
   end
 
   def index
