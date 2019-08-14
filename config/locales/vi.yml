@@ -5,6 +5,8 @@ vi:
   text_post: "Đăng"
   text_follower: "Người theo dõi"
   text_following: "Đang theo dõi"
+  text_follow: "Theo dõi"
+  text_unfollow: "Ngừng theo dõi"
   text_error: "Kích thước file nhỏ hơn 10MB"
   text_flash_create: "Tạo thành công!"
   text_flash_update: "Cập nhật thành công!"

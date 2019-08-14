@@ -44,6 +44,13 @@ class AuthorsController < ApplicationController
     redirect_to authors_path
   end
 
+  def user_following
+    @title = t(:text_follower)
+    @author  = Author.find(params[:id])
+    @users = @author.user_following.paginate(page: params[:page])
+    render "show_follow"
+  end
+
   private
   def author_params
     params.require(:author).permit(:name, :nickname, :content)

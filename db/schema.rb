@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_070339) do
+ActiveRecord::Schema.define(version: 2019_08_13_030440) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 2019_08_12_070339) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationship_authors", force: :cascade do |t|
+    t.integer "author_f_id"
+    t.integer "user_f_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_f_id", "user_f_id"], name: "index_relationship_authors_on_author_f_id_and_user_f_id", unique: true
+    t.index ["author_f_id"], name: "index_relationship_authors_on_author_f_id"
+    t.index ["user_f_id"], name: "index_relationship_authors_on_user_f_id"
   end
 
   create_table "relationship_users", force: :cascade do |t|

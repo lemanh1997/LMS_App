@@ -2,10 +2,14 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessor :remember_token
   has_many :comments, dependent: :destroy
+
   has_many :active_relationship_user, class_name: "RelationshipUser", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_relationship_user, source: :followed
   has_many :passive_relationship_user, class_name:  "RelationshipUser", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationship_user, source: :follower
+
+  has_many :active_relationship_author, class_name: "RelationshipAuthor", foreign_key: "user_f_id", dependent: :destroy
+  has_many :author_following, through: :active_relationship_author, source: :author_f
 
   before_save :email_downcase
   validates :name,  presence: true, length: { maximum: 50 }

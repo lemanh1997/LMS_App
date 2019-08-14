@@ -9,14 +9,19 @@ Rails.application.routes.draw do
     root "static_pages#home"
     resources :users do
       member do
-        get :following, :followers
+        get :following, :followers, :author_following
       end        
     end
     resources :categories
     resources :publishers
-    resources :authors
+    resources :authors do
+      member do
+        get :user_following
+      end
+    end
     resources :books
     resources :comments, only: [:create, :destroy]
     resources :relationship_users, only: [:create, :destroy]
+    resources :relationship_authors, only: [:create, :destroy]
   end
 end

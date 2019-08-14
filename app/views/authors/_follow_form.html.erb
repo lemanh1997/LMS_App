@@ -1,0 +1,13 @@
+<div id="follow_form">
+<% if @author.author_following?(current_user) %>
+  <%= form_for(@author.passive_relationship_author.find_by(user_f_id: current_user.id), html: { method: :delete }, remote: true) do |f| %>
+    <div><%= hidden_field_tag :author_f_id, @author.id %></div>
+    <%= f.submit t(:text_unfollow), class: "btn" %>
+  <% end %>
+<% else %>
+  <%= form_for(@author.passive_relationship_author.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :author_f_id, @author.id %></div>
+    <%= f.submit t(:text_follow), class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+</div>

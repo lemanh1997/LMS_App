@@ -1,4 +1,5 @@
 <li>
+  <%= image_tag("book.jpg", alt: "Book", size: "60x60") %>
   <%= link_to book.name, book %>
   <% if current_user.admin? %>
     | <%= link_to t(:text_edit), edit_book_path(book) %>

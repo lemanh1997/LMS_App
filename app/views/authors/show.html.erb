@@ -6,6 +6,10 @@
       <span>(<%= @author.nickname %>)</span>
       <span>&emsp;&emsp;&emsp;<%= @author.content if @author.content.present? %></span>
     </section>
+    <section class="stats">
+      <%= render "shared/stats_author_user" %>
+    </section>
+    <%= render "follow_form" %>
   </aside>
   <div class="col-md-8">
     <% if @author.books.any? %>
