@@ -1,0 +1,7 @@
+<li>
+  <%= link_to publisher.name, publisher %>
+  <% if current_user.admin? %>
+    | <%= link_to t(:text_edit), edit_publisher_path(publisher) %>
+    | <%= link_to t(:text_delete), publisher, method: :delete %>
+  <% end %>
+</li>
