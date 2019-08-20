@@ -27,7 +27,11 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    @comment = current_user.comments.find_by(id: params[:id])
+    if current_user.admin?    # admin co quyen xoa bat ky binh luan nao
+      @comment = Comment.find_by(id: params[:id])
+    else
+      @comment = current_user.comments.find_by(id: params[:id])
+    end
     redirect_to request.referrer if @comment.nil?
   end
 end

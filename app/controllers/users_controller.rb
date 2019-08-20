@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     # @comments = @user.comments.paginate(page: params[:page])
-    @feed_items = current_user.feed.paginate(page: params[:page], per_page: 10)
+    @feed_items = @user.feed.paginate(page: params[:page], per_page: 10)
   end
 
   def index
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to root_path unless current_user?(@user)
+    redirect_to root_path unless current_user?(@user) || current_user.admin?
   end
 
   def set_user

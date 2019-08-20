@@ -187,6 +187,15 @@ input {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+    .right {
+      float: right;
+    }
+    .left {
+      float: left;
+    }
+    a {
+      padding-top: 15px;
+    }
   }
 }
 

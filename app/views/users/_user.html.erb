@@ -1,8 +1,8 @@
 <li>
   <%= gravatar_for user, size: 50 %>
-  <%= link_to user.name, user %>
-  <% if current_user.admin? %>
-    | <%= link_to t(:text_edit), edit_user_path(user) %>
-    | <%= link_to t(:text_delete), user, method: :delete %>
+  <%= link_to user.name, user, class: "btn btn-outline-primary left" %>
+  <% if current_user.admin? && !user.admin? %>
+    <%= link_to t(:text_delete), user, method: :delete, class: "btn btn-outline-primary right" %>
+    <%= link_to t(:text_edit), edit_user_path(user), class: "btn btn-outline-primary right" %>
   <% end %>
 </li>
