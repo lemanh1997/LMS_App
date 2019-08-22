@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update]
-  before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
   before_action :admin_user, only: [:create, :edit, :update, :destroy]
 
   def new
@@ -8,6 +7,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @comments = @book.comments.paginate(page: params[:page], per_page: 5)
+    @comment = @book.comments.build
   end
 
   def index

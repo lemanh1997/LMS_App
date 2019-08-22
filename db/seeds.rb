@@ -10,16 +10,18 @@ User.create!(name:  "User First",
              email: "manh@gmail.com",
              password:              "123123",
              password_confirmation: "123123",
-             admin: true)
+             role: 2)
 
 60.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
+  role = ((n+1)%5 == 0)? 1 : 0
   User.create!(name:  name,
                email: email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               role: role )
 end
 
 Publisher.create!(name: "Sách chưa xuất bản", address: "Khong dia chi", content: "")
@@ -58,4 +60,11 @@ end
   Book.create!(name: name, status: status, content: content,
                   author_id: author_id, category_id: category_id,
                   publisher_id: publisher_id)
+end
+
+books = Book.order(:created_at).take(6)
+10.times do
+  content = Faker::Lorem.sentence(word_count: 3, supplemental: true)
+  user_id = rand(1..10)
+  books.each { |book| book.comments.create!(content: content, user_id: user_id) }
 end

@@ -106,7 +106,7 @@ $gray-medium-light: #eaeaea;
 }
 
 aside {
-  section.user_info {
+  section.object_info {
     margin-top: 20px;
   }
   section {
@@ -180,52 +180,78 @@ input {
   margin-left: 0;
 }
 
-.users {
+.objects {
   list-style: none;
   margin: 0;
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+    .right {
+      float: right;
+    }
+    .left {
+      float: left;
+    }
+    span {
+      position: absolute;
+      left: 47%;
+      font-size: 120%;
+      padding-top: 13px;
+      padding-bottom: 13px;
+    }
+    a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
   }
 }
 
-.authors {
+.comments {
   list-style: none;
-  margin: 0;
+  padding: 0;
   li {
-    overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
   }
 }
 
-.books {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
   }
 }
 
-.categories {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
   }
 }
 
-.publishers {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
+div.pagination {
+  margin-left: 30%;
 }

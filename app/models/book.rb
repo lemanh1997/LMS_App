@@ -2,6 +2,7 @@ class Book < ApplicationRecord
   belongs_to :author
   belongs_to :category
   belongs_to :publisher
+  has_many :comments, dependent: :destroy
 
   NO_AUTHOR_ID = 1
   NO_CATEGORY_ID = 1

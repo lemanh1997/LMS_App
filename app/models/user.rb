@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessor :remember_token
+  enum role: [:user, :moderator, :admin]
+  has_many :comments, dependent: :destroy
 
   before_save :email_downcase
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :content, length: { maximum: 200 }
-  validates :level, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than: 6 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -17,7 +18,7 @@ class User < ApplicationRecord
     end
 
     def new_token
-      SecureRandom.urldsafe_base64
+      SecureRandom.urlsafe_base64
     end
   end
 
@@ -33,6 +34,10 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def feed
+    Comment.where("user_id = ?", id)
   end
 
   private
