@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :logged_in_user
   before_action :admin_user, only: [:create, :edit, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update]
   before_action :before_destroy, only: :destroy
@@ -9,11 +8,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @books = @category.books.paginate(page: params[:page])
+    @books = @category.books.paginate(page: params[:page], per_page: 5)
   end
 
   def index
-    @categories = Category.paginate(page: params[:page])
+    @categories = Category.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
@@ -21,8 +20,8 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    if(@category.save)
-      flash[:success] = t(:text_flash_create)
+    if @category.save
+      flash[:success] = t(:create_complete)
       redirect_to categories_path
     else
       render :new
@@ -30,8 +29,8 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if(@category.update_attributes(category_params))
-      flash[:success] = t(:text_flash_update)
+    if @category.update_attributes(category_params)
+      flash[:success] = t(:update_complete)
       redirect_to categories_path
     else
       render :edit
@@ -40,7 +39,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     Category.find(params[:id]).destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to categories_path
   end
 
@@ -52,14 +51,12 @@ class CategoriesController < ApplicationController
   def set_category
     @category = Category.find_by(id: params[:id])
     return if @category
-    flash[:info] = t(:text_flash_info)
+    flash[:info] = t(:no_exits)
     redirect_to categories_path
   end
 
   def before_destroy
     @category = Category.find(params[:id])
-    @category.books.each do |book|
-      book.update_before_destroy_category
-    end
+    @category.update_book_category
   end
 end

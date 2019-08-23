@@ -2,11 +2,11 @@
 
 <h1><%= t("books.index.name_page") %></h1>
 
-<%= link_to t("books.index.text_button"), new_book_path %>
+<% if current_user.admin? %>
+<%= link_to t("books.index.text_button"), new_book_path, class: "btn btn-outline-primary right" %>
+<% end %>
 
-<%= will_paginate %>
-
-<ul class="books">
+<ul class="objects">
   <%= render @books %>
 </ul>
 

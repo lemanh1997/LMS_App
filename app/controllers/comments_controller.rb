@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
   def create
@@ -7,17 +6,17 @@ class CommentsController < ApplicationController
     @comment = @book.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = t(:text_flash_create)
+      flash[:success] = t(:create_complete)
     else
       @feed_items = []
-      flash[:danger] = t(:text_flash_danger_3)
+      flash[:danger] = t(:create_fails)
     end
     redirect_to @book
   end
 
   def destroy
     @comment.destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to request.referrer || current_user
   end
 
@@ -27,7 +26,11 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    @comment = current_user.comments.find_by(id: params[:id])
+    if current_user.admin?    # admin co quyen xoa bat ky binh luan nao
+      @comment = Comment.find_by(id: params[:id])
+    else
+      @comment = current_user.comments.find_by(id: params[:id])
+    end
     redirect_to request.referrer if @comment.nil?
   end
 end
