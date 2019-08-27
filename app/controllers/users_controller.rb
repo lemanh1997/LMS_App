@@ -11,6 +11,11 @@ class UsersController < ApplicationController
   def show
     # @comments = @user.comments.paginate(page: params[:page])
     @feed_items = @user.feed.paginate(page: params[:page], per_page: 10)
+    if current_user.following?(@user)
+      @user_unfollow = current_user.active_relationship_user.find_by(followed_id: @user.id)
+    else
+      @user_follow = current_user.active_relationship_user.build
+    end
   end
 
   def index
@@ -48,7 +53,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :content, :roles, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :content, :role, :password, :password_confirmation)
   end
 
   def correct_user

@@ -68,3 +68,10 @@ books = Book.order(:created_at).take(6)
   user_id = rand(1..10)
   books.each { |book| book.comments.create!(content: content, user_id: user_id) }
 end
+
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

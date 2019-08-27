@@ -4,6 +4,10 @@
     <section class="object_info">
       <%= render "shared/user_info" %>
     </section>
+    <section class="stats">
+      <%= render "shared/stats" %>
+    </section>
+    <%= render "follow_form" if logged_in?  %>
   </aside>
   <div class="col-md-8">
     <h3><%= t("users.show.text_comments") %></h3>

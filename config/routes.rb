@@ -7,11 +7,15 @@ Rails.application.routes.draw do
     post "/signup", to: "users#create"
     get "/about", to: "static_pages#about"
     root "static_pages#home"
-    resources :users
+    resources :users do
+      resources :following, only: [:index]
+      resources :followers, only: [:index]
+    end
     resources :categories
     resources :publishers
     resources :authors
     resources :books
     resources :comments, only: [:create, :destroy]
+    resources :relationship_users, only: [:create, :destroy]
   end
 end

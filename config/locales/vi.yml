@@ -6,6 +6,8 @@ vi:
   text_edit: "Chỉnh sửa"
   text_comment: "Bình luận"
   text_post: "Đăng"
+  text_follower: "Người theo dõi"
+  text_following: "Đang theo dõi"
   text_error: "Kích thước file nhỏ hơn 10MB"
   create_complete: "Tạo thành công!"
   update_complete: "Cập nhật thành công!"

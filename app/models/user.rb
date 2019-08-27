@@ -3,6 +3,10 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   enum role: [:user, :moderator, :admin]
   has_many :comments, dependent: :destroy
+  has_many :active_relationship_user, class_name: RelationshipUser.name, foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationship_user, source: :followed
+  has_many :passive_relationship_user, class_name: RelationshipUser.name, foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :passive_relationship_user, source: :follower
 
   before_save :email_downcase
   validates :name,  presence: true, length: { maximum: 50 }
@@ -37,7 +41,19 @@ class User < ApplicationRecord
   end
 
   def feed
-    Comment.where("user_id = ?", id)
+    Comment.where("user_id IN (SELECT followed_id FROM relationship_users WHERE follower_id = :user_id) OR user_id = :user_id", user_id: id)
+  end
+
+  def follow other_user 
+    following << other_user
+  end
+
+  def unfollow other_user
+    following.delete(other_user)
+  end
+
+  def following? other_user
+    following.include?(other_user)
   end
 
   private
