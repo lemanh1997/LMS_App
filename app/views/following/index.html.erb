@@ -1,12 +1,14 @@
 <% provide(:title, @title) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-      <h1><%= link_to @author.name, @author %></h1>
-      <span><b><%= t("layouts.header.text_book") %>: </b> <%= @author.books.count %></span>
+    <section class="object_info">
+      <%= gravatar_for @user %>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to t("shared.user_info.view_profile"), @user %></span>
+      <span><b><%= t(:text_comment) %>:</b> <%= @user.comments.count %></span>
     </section>
     <section class="stats">
-      <%= render "shared/stats_author_user" %>
+      <%= render "shared/stats" %>
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
@@ -19,10 +21,10 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
+      <ul class="objects follow">
         <%= render @users %>
       </ul>
-      <%#= will_paginate %>
+      <%= will_paginate @users %>
     <% end %>
   </div>
 </div>

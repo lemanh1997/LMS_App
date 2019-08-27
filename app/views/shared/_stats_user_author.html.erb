@@ -1,6 +1,6 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= author_following_user_path(@user) %>">
+  <a href="<%= user_authorfollowing_index_path(@user.id) %>">
     <strong id="following" class="stat">
       <%= @user.author_following.count %>
       <%= t(:text_following) %>

@@ -30,6 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  text_count: "Books (%{count})"
+  text_count_comment: "Comments (%{count})"
+  text_ago: "ago"
   text_delete: "Delete"
   text_edit: "Edit"
   text_comment: "Comment"
@@ -39,24 +42,30 @@ en:
   text_follow: "Follow"
   text_unfollow: "Unfollow"
   text_error: "Should be less than 10MB"
-  text_flash_create: "Create Complete!"
-  text_flash_update: "Update Complete!"
-  text_flash_delete: "Delete Complete!"
-  text_flash_danger_1: "Invalid email or password!"
-  text_flash_danger_2: "Please Login!"
-  text_flash_danger_3: "Don't create!"
-  text_flash_info: "Don't Exits!"
+  create_complete: "Create Complete!"
+  update_complete: "Update Complete!"
+  delete_complete: "Delete Complete!"
+  invalid_email_or_password: "Invalid email or password!"
+  request_login: "Please Login!"
+  create_fails: "Don't create!"
+  no_exits: "Don't Exits!"
 
   users:
     edit:
       name_page: "Edit User"
       text_page: "Update your profile"
       text_button: "Save Change!"
+      text_change: "Change!"
     index:
       name_page: "All Users"
     new:
       name_page: "Sign Up"
       text_button: "Create Account!"
+    show:
+      text_comments: "Comment Feed"
+    _users:
+      roles_moderator: "MODERATOR"
+      roles_admin: "ADMIN"
 
   static_pages:
     home:
@@ -65,6 +74,14 @@ en:
       text_page: "Welcome to the Library Management App"
     about:
       name_page: "Abouts"
+
+  shared:
+    feed:
+      text_commented: "commented on"
+    comment_form:
+      text_holder: "Compose new comment ..."
+    user_info:
+      view_profile: "View Profile"
 
   sessions:
     new:

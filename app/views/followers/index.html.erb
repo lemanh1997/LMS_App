@@ -1,9 +1,10 @@
 <% provide(:title, @title) %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
+    <section class="object_info">
       <%= gravatar_for @user %>
-      <h1><%= link_to @user.name, @user %></h1>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to t("shared.user_info.view_profile"), @user %></span>
       <span><b><%= t(:text_comment) %>:</b> <%= @user.comments.count %></span>
     </section>
     <section class="stats">
@@ -20,10 +21,10 @@
   <div class="col-md-8">
     <h3><%= @title %></h3>
     <% if @users.any? %>
-      <ul class="users follow">
+      <ul class="objects follow">
         <%= render @users %>
       </ul>
-      <%= will_paginate %>
+      <%= will_paginate @users %>
     <% end %>
   </div>
 </div>

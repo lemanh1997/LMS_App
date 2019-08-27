@@ -1,6 +1,5 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update]
-  before_action :logged_in_user
   before_action :admin_user, only: [:create, :edit, :update, :destroy]
   before_action :before_destroy, only: :destroy
 
@@ -9,11 +8,11 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @books = @author.books.paginate(page: params[:page])
+    @books = @author.books.paginate(page: params[:page], per_page: 5)
   end
 
   def index
-    @authors = Author.paginate(page: params[:page])
+    @authors = Author.paginate(page: params[:page], per_page: 5)
   end
 
   def edit
@@ -22,7 +21,7 @@ class AuthorsController < ApplicationController
   def create
     @author = Author.new(author_params)
     if @author.save
-      flash[:success] = t(:text_flash_create)
+      flash[:success] = t(:create_complete)
       redirect_to authors_path
     else
       render :new
@@ -31,7 +30,7 @@ class AuthorsController < ApplicationController
 
   def update
     if @author.update_attributes(author_params)
-      flash[:success] = t(:text_flash_update)
+      flash[:success] = t(:update_complete)
       redirect_to authors_path
     else
       render :edit
@@ -40,15 +39,8 @@ class AuthorsController < ApplicationController
 
   def destroy
     Author.find(params[:id]).destroy
-    flash[:success] = t(:text_flash_delete)
+    flash[:success] = t(:delete_complete)
     redirect_to authors_path
-  end
-
-  def user_following
-    @title = t(:text_follower)
-    @author  = Author.find(params[:id])
-    @users = @author.user_following.paginate(page: params[:page])
-    render "show_follow"
   end
 
   private
@@ -59,14 +51,12 @@ class AuthorsController < ApplicationController
   def set_author
     @author = Author.find_by(id: params[:id])
     return if @author
-    flash[:indo] = t(:text_flash_info)
+    flash[:info] = t(:no_exits)
     redirect_to authors_path
   end
 
   def before_destroy
     @author = Author.find(params[:id])
-    @author.books.each do |book|
-      book.update_before_destroy_author
-    end
+    @author.update_book_author
   end
 end

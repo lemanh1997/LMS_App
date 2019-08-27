@@ -106,7 +106,7 @@ $gray-medium-light: #eaeaea;
 }
 
 aside {
-  section.user_info {
+  section.object_info {
     margin-top: 20px;
   }
   section {
@@ -180,13 +180,30 @@ input {
   margin-left: 0;
 }
 
-.users {
+.objects {
   list-style: none;
   margin: 0;
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+    .right {
+      float: right;
+    }
+    .left {
+      float: left;
+    }
+    span {
+      position: absolute;
+      left: 47%;
+      font-size: 120%;
+      padding-top: 13px;
+      padding-bottom: 13px;
+    }
+    a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
   }
 }
 
@@ -269,6 +286,10 @@ span.picture {
   }
 }
 
-.users.follow {
+.objects.follow {
   padding: 0;
+}
+
+div.pagination {
+  margin-left: 30%;
 }

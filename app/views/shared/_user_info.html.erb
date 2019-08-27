@@ -1,3 +1,4 @@
 <%= link_to gravatar_for(@user, size: 50), @user %>
 <h1><%= @user.name %></h1><br>
+<span><%= link_to t("shared.user_info.view_profile"), @user %></span>
 <span><%= pluralize(@user.comments.count, t(:text_comment)) %></span>

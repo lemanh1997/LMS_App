@@ -8,17 +8,15 @@ Rails.application.routes.draw do
     get "/about", to: "static_pages#about"
     root "static_pages#home"
     resources :users do
-      member do
-        get :following, :followers, :author_following
-      end        
+      resources :following, only: [:index]
+      resources :followers, only: [:index]
+      resources :authorfollowing, only: [:index]
+    end
+    resources :authors do
+      resources :userfollowing, only: [:index]
     end
     resources :categories
     resources :publishers
-    resources :authors do
-      member do
-        get :user_following
-      end
-    end
     resources :books
     resources :comments, only: [:create, :destroy]
     resources :relationship_users, only: [:create, :destroy]
