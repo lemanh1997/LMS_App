@@ -9,10 +9,11 @@
   </aside>
   <div class="col-md-8">
     <h3><%= @title %></h3>
-    <% if @authors.any? %>
+    <% if @favorites.any? %>
       <ul class="objects follow">
-        <%= render @authors %>
+        <%= render @favorites %>
       </ul>
+      <%= will_paginate @favorites %>
     <% end %>
   </div>
 </div>

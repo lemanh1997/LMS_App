@@ -1,15 +1,21 @@
 <% @user ||= current_user %>
 <div class="stats">
   <a href="<%= user_following_index_path(@user.id) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
     <%= t(:text_following) %>
+    <strong id="following" class="stat">
+      (<%= @user.following.count %>)
+    </strong>
   </a>
   <a href="<%= user_followers_path(@user.id) %>">
+    <%= t(:text_follower) %>  
     <strong id="followers" class="stat">
-      <%= @user.followers.count %>
+      (<%= @user.followers.count %>)
     </strong>
-    <%= t(:text_follower) %>
+  </a>
+  <a href="<%= user_favorites_path(@user.id) %>">
+    <%= t("layouts.header.text_book") << " & " << t("layouts.header.text_author") %>  
+    <strong id="followers" class="stat">
+      (<%= @user.favorites.count %>)
+    </strong>
   </a>
 </div>

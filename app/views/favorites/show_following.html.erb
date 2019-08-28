@@ -2,11 +2,12 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="object_info">
-      <h1><%= link_to @author.name, @author %></h1>
-      <span><b><%= t("layouts.header.text_book") %>: </b> <%= @author.books.count %></span>
+      <h1><%= @favorable.class %>: <%= link_to @favorable.name, @favorable %></h1>
+      <% if @favorable.class == Author %>
+        <span><b><%= t("layouts.header.text_book") %>: </b> <%= @favorable.books.count %></span>
+      <% end %>
     </section>
     <section class="stats">
-      <%= render "shared/stats_author_user" %>
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>

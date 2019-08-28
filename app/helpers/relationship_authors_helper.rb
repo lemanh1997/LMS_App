@@ -1,2 +1,0 @@
-module RelationshipAuthorsHelper
-end

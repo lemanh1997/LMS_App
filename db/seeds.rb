@@ -78,4 +78,10 @@ followers.each { |follower| follower.follow(user) }
 
 authors = Author.all
 author = authors.first
-following.each { |followed| author.follow(followed) }
+book = Book.first
+following.each { |followed| 
+  author.favorites.create(user_id: followed.id) 
+  book.favorites.create(user_id: followed.id)
+}
+Author.all.each { |authorw| authorw.favorites.create(user_id: user.id) }
+Book.all.each { |authorw| authorw.favorites.create(user_id: user.id) }

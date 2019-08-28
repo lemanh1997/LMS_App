@@ -3,6 +3,8 @@ class Book < ApplicationRecord
   belongs_to :category
   belongs_to :publisher
   has_many :comments, dependent: :destroy
+  has_many :favorites, as: :favorable, dependent: :destroy
+  has_many :users, through: :favorites, dependent: :destroy
 
   NO_AUTHOR_ID = 1
   NO_CATEGORY_ID = 1

@@ -1,0 +1,32 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="ojbect_info">
+      <%= gravatar_for @favorable %>
+      <h1><%= link_to @favorable.name, @favorable %></h1>
+      <span><b><%= t(:text_comment) %>:</b> <%= @favorable.comments.count %></span>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#<%= t("layouts.header.text_book") %>"><%= t(:text_count, count:  @favorable.favorite_books.count) %></a></li>
+      <li><a data-toggle="tab" href="#<%= t("layouts.header.text_author") %>"><%= t(:text_count_author, count:  @favorable.favorite_authors.count) %></a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="<%= t("layouts.header.text_book") %>" class="tab-pane fade in active" >
+        <% if @favorites_books.any? %>
+          <ul class="objects follow">
+            <%= render @favorites_books %>
+          </ul>
+        <% end %>
+      </div>
+      <div id="<%= t("layouts.header.text_author") %>" class="tab-pane fade" >
+        <% if @favorites_authors.any? %>
+          <ul class="objects follow">
+            <%= render @favorites_authors %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

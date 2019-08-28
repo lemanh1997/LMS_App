@@ -7,7 +7,7 @@
       <span>&emsp;&emsp;&emsp;<%= @author.content if @author.content.present? %></span>
     </section>
     <section class="stats">
-      <%= render "shared/stats_author_user" %>
+      <%= link_to t(:text_count_user, count:  @author.users.count), author_followers_path(@author.id), method: :get %>
     </section>
     <%= render "follow_form" %>
   </aside>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_090137) do
+ActiveRecord::Schema.define(version: 2019_08_28_013602) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -55,22 +55,22 @@ ActiveRecord::Schema.define(version: 2019_08_22_090137) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "favorable_id"
+    t.string "favorable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "favorable_id", "favorable_type"], name: "index_favorites_on_user_id_and_favorable_id_and_favorable_type", unique: true
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "publishers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "relationship_authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "author_f_id"
-    t.integer "user_f_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_f_id", "user_f_id"], name: "index_relationship_authors_on_author_f_id_and_user_f_id", unique: true
-    t.index ["author_f_id"], name: "index_relationship_authors_on_author_f_id"
-    t.index ["user_f_id"], name: "index_relationship_authors_on_user_f_id"
   end
 
   create_table "relationship_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -99,4 +99,5 @@ ActiveRecord::Schema.define(version: 2019_08_22_090137) do
   add_foreign_key "books", "publishers"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "users"
 end
