@@ -31,6 +31,8 @@
 
 en:
   text_count: "Books (%{count})"
+  text_count_author: "Authors (%{count})"
+  text_count_user: "Users Follow (%{count})"
   text_count_comment: "Comments (%{count})"
   text_ago: "ago"
   text_delete: "Delete"

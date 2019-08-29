@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_many :passive_relationship_user, class_name: RelationshipUser.name, foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationship_user, source: :follower
 
+  # has_many :active_relationship_author, class_name: RelationshipAuthor.name, foreign_key: "user_f_id", dependent: :destroy
+  # has_many :favorite_authorsing, through: :active_relationship_author, source: :author_f
+
+  has_many :favorites
+  has_many :favorite_authors, through: :favorites, source: :favorable, source_type: Author.name, dependent: :destroy
+  has_many :favorite_books, through: :favorites, source: :favorable, source_type: Book.name, dependent: :destroy
+
   before_save :email_downcase
   validates :name,  presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }

@@ -75,3 +75,13 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+authors = Author.all
+author = authors.first
+book = Book.first
+following.each { |followed| 
+  author.favorites.create(user_id: followed.id) 
+  book.favorites.create(user_id: followed.id)
+}
+Author.all.each { |authorw| authorw.favorites.create(user_id: user.id) }
+Book.all.each { |authorw| authorw.favorites.create(user_id: user.id) }

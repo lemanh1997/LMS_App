@@ -1,0 +1,29 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="object_info">
+      <h1><%= @favorable.class %>: <%= link_to @favorable.name, @favorable %></h1>
+      <% if @favorable.class == Author %>
+        <span><b><%= t("layouts.header.text_book") %>: </b> <%= @favorable.books.count %></span>
+      <% end %>
+    </section>
+    <section class="stats">
+      <% if @users.any? %>
+        <div class="user_avatars">
+          <% @users.each do |user| %>
+            <%= link_to gravatar_for(user, size: 30), user %>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="objects follow">
+        <%= render @users %>
+      </ul>
+      <%= will_paginate @users %>
+    <% end %>
+  </div>
+</div>

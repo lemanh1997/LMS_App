@@ -1,0 +1,7 @@
+<div id="follow_form">
+<% if @author.users.include?(current_user) %>
+  <%= link_to t(:text_unfollow), author_follower_path(@author.id, current_user.id), method: :delete, class: "btn" %>
+<% else %>
+  <%= link_to t(:text_follow), author_followers_path(@author.id), method: :post, class: "btn btn-primary" %>
+<% end %>
+</div>

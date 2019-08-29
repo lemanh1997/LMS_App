@@ -11,6 +11,10 @@
       <h1><%= t("books.show.text_category") %> <%= @book.publisher.name %></h1>
       <h1><%= t("books.show.text_publisher") %> <%= @book.category.name %></h1>
     </section>
+    <section class="stats">
+      <%= link_to t(:text_count_user, count:  @book.users.count), book_followers_path(@book.id), method: :get %>
+    </section>
+    <%= render "follow_form" %>
   </aside>
   <div class="col-md-8">
     <section class="comment_form">

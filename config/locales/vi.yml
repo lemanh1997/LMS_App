@@ -1,5 +1,7 @@
 vi:
   text_count: "Sách (%{count})"
+  text_count_author: "Tác giả (%{count})"
+  text_count_user: "Thành viên đang theo dõi (%{count})"
   text_count_comment: "Bình luận (%{count})" 
   text_ago: "trước"
   text_delete: "Xóa"
@@ -8,6 +10,8 @@ vi:
   text_post: "Đăng"
   text_follower: "Người theo dõi"
   text_following: "Đang theo dõi"
+  text_follow: "Theo dõi"
+  text_unfollow: "Ngừng theo dõi"
   text_error: "Kích thước file nhỏ hơn 10MB"
   create_complete: "Tạo thành công!"
   update_complete: "Cập nhật thành công!"

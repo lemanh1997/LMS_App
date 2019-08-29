@@ -1,6 +1,7 @@
 <li>
+  <%= image_tag("man.jpg", alt: "Book", size: "60x60", class: "left") %>
   <%= link_to author.name, author, class: "left" %>
-  <% if current_user.admin? %>
+  <% if current_user.admin? && author.id != 1 %>
     <%= link_to t(:text_delete), author, method: :delete, class: "btn btn-outline-primary right" %>
     <%= link_to t(:text_edit), edit_author_path(author), class: "btn btn-outline-primary right" %>
   <% end %>

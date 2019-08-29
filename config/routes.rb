@@ -10,11 +10,16 @@ Rails.application.routes.draw do
     resources :users do
       resources :following, only: [:index]
       resources :followers, only: [:index]
+      resources :favorites, only: [:index]
+    end
+    resources :authors do
+      resources :favorites, only: [:index, :create, :destroy], as: "followers"
+    end
+    resources :books do
+      resources :favorites, only: [:index, :create, :destroy], as: "followers"
     end
     resources :categories
     resources :publishers
-    resources :authors
-    resources :books
     resources :comments, only: [:create, :destroy]
     resources :relationship_users, only: [:create, :destroy]
   end

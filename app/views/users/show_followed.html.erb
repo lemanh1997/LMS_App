@@ -1,0 +1,19 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="ojbect_info">
+      <%= gravatar_for @user %>
+      <h1><%= link_to @user.name, @user %></h1>
+      <span><b><%= t(:text_comment) %>:</b> <%= @user.comments.count %></span>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @favorites.any? %>
+      <ul class="objects follow">
+        <%= render @favorites %>
+      </ul>
+      <%= will_paginate @favorites %>
+    <% end %>
+  </div>
+</div>
