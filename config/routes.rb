@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     get "/about", to: "static_pages#about"
+    get "/show_borrow", to: "borrows#index"
     root "static_pages#home"
     resources :users do
       resources :following, only: [:index]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     end
     resources :books do
       resources :favorites, only: [:index, :create, :destroy], as: "followers"
+      resources :borrows, only: [:new, :create, :show, :edit, :update, :index, :destroy]
     end
     resources :categories
     resources :publishers

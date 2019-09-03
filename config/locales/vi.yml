@@ -19,6 +19,7 @@ vi:
   invalid_email_or_password: "Email hoặc mật khẩu không chính xác!"
   request_login: "Hãy đăng nhập trước khi thực hiện chức năng này!"
   create_fails: "Tạo không thành công!"
+  edit_fails: "Sửa không thành công!"
   no_exits: "Thứ bạn muốn tìm không tồn tại!"
 
   users:
@@ -119,10 +120,29 @@ vi:
       text_status: "Tình trạng sách:"
       text_content: "Nội dung:"
       text_pages: "Số trang sách:"
-      text_number_of: "Số lượng:"
+      text_number_of: "Số lượng còn lại:"
+      text_count: "Tổng số sách:"
       text_author: "Tác giả:"
       text_category: "Thể loại:"
       text_publisher: "Nhà xuất bản:"
+      text_borrow: "Mượn Sách" 
+
+  borrows:
+    edit:
+      name_page: "Cập nhật phiếu mượn sách"
+      text_button: "Cập nhật!"
+    index:
+      default: "<span class='text-primary'>Đang chờ phản hồi</span>"
+      denied: "<span class='text-muted'>Không đồng ý</span>"
+      accepted: "<span class='text-success'>Chấp thuận</span>"
+      borrowed: "<span class='text-info'>Đã cho mượn</span>"
+      returned: "<span class='text-secondary'>Đã nhận lại sách</span>"
+      name_page: "Danh sách mượn"
+    new:
+      name_page: "Tạo phiếu mượn"
+      text_button: "Tạo mới!"
+    show:
+      name_page: "Sách cho mượn"
 
   layouts:
     header:
@@ -138,6 +158,7 @@ vi:
       text_setting: "Cập nhật thông tin"
       text_logout: "Thoát"
       text_login: "Đăng nhập"
+      text_borrow: "Mượn Sách"      
 
   activerecord:
     models:
@@ -146,6 +167,7 @@ vi:
       category: "Category"
       book: "Book"
       author: "Author"
+      borrow: "Borrow"
     attributes:
       user:
         name: "Tên thành viên:"
@@ -174,3 +196,8 @@ vi:
         author: "Tác giả:"
         category: "Thể loại:"
         publisher: "Nhà xuất bản:"
+      borrow:
+        start_date: "Ngày bắt đầu mượn sách:"
+        end_date: "Ngày trả sách:"
+        name: "Tên sách:"
+        confirm: "Tình trạng:"

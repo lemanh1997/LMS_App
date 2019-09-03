@@ -1,0 +1,24 @@
+<% provide(:title, t("borrows.new.name_page")) %>
+<% provide(:button_name, t("borrows.new.text_button")) %>
+<h1><%= params[:book_id] %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@borrow, url: book_borrows_path(params[:book_id]), method: :post) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :start_date %>
+      <%= f.date_field :start_date, min: Time.now, value: Time.now.to_date, class: "form-control" %>
+
+      <%= f.label :end_date %>
+      <%= f.date_field :end_date, min: Time.now, value: Time.now.to_date, class: "form-control" %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, value: Book.find_by(id: params[:book_id]).name, class: "form-control", disabled: true %>
+
+      <div><%= hidden_field_tag :status, 0 %></div>
+
+      <%= f.submit yield(:button_name), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

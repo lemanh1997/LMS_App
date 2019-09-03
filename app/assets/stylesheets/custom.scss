@@ -191,7 +191,9 @@ input {
       float: right;
     }
     .left {
-      float: left;
+      float: left;      
+      padding-top: 15px;
+      padding-bottom: 15px;
     }
     span {
       position: absolute;
@@ -304,4 +306,10 @@ div.pagination {
 .tab-pane {
   overflow: auto;
   height: 400px;
+}
+
+.borrow {
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }

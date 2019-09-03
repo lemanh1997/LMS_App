@@ -91,6 +91,9 @@ GEM
       deep_merge (~> 1.2, >= 1.2.1)
       dry-schema (~> 1.0)
     crass (1.0.4)
+    date_validator (0.9.0)
+      activemodel
+      activesupport
     deep_merge (1.2.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -458,6 +461,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   config
+  date_validator (~> 0.9.0)
   faker
   file_validators
   fog (= 1.42)
