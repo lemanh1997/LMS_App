@@ -3,6 +3,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   enum role: [:user, :moderator, :admin]
   has_many :comments, dependent: :destroy
+  has_many :borrows, dependent: :destroy
+
   has_many :active_relationship_user, class_name: RelationshipUser.name, foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_relationship_user, source: :followed
   has_many :passive_relationship_user, class_name: RelationshipUser.name, foreign_key: "followed_id", dependent: :destroy

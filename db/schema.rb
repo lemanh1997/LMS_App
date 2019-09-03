@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_013602) do
+ActiveRecord::Schema.define(version: 2019_09_04_094729) do
 
   create_table "authors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -31,9 +31,24 @@ ActiveRecord::Schema.define(version: 2019_08_28_013602) do
     t.bigint "publisher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count", default: 0
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["category_id"], name: "index_books_on_category_id"
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
+  end
+
+  create_table "borrows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status", default: 0
+    t.date "confirmed_at"
+    t.bigint "book_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_borrows_on_book_id"
+    t.index ["user_id", "book_id", "start_date", "end_date", "status"], name: "index_borrow", unique: true
+    t.index ["user_id"], name: "index_borrows_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,6 +112,8 @@ ActiveRecord::Schema.define(version: 2019_08_28_013602) do
   add_foreign_key "books", "authors"
   add_foreign_key "books", "categories"
   add_foreign_key "books", "publishers"
+  add_foreign_key "borrows", "books"
+  add_foreign_key "borrows", "users"
   add_foreign_key "comments", "books"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "users"

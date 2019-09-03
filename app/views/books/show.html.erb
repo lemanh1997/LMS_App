@@ -7,6 +7,7 @@
       <h1><%= t("books.show.text_content") %> <%= @book.content if @book.content.present? %></h1>
       <h1><%= t("books.show.text_pages") %> <%= @book.pages %></h1>
       <h1><%= t("books.show.text_number_of") %> <%= @book.number_of %></h1>
+      <h1><%= t("books.show.text_count") %> <%= @book.count %></h1>
       <h1><%= t("books.show.text_author") %> <%= @book.author.name %></h1>
       <h1><%= t("books.show.text_category") %> <%= @book.publisher.name %></h1>
       <h1><%= t("books.show.text_publisher") %> <%= @book.category.name %></h1>
@@ -14,6 +15,9 @@
     <section class="stats">
       <%= link_to t(:text_count_user, count:  @book.users.count), book_followers_path(@book.id), method: :get %>
     </section>
+    <% if @flag %>
+      <%= link_to t("books.show.text_borrow"), new_book_borrow_path(@book.id), class: "btn btn-primary borrow" %>
+    <% end %> 
     <%= render "follow_form" %>
   </aside>
   <div class="col-md-8">
