@@ -50,6 +50,7 @@ en:
   invalid_email_or_password: "Invalid email or password!"
   request_login: "Please Login!"
   create_fails: "Don't create!"
+  edit_fails: "Edit fails!"
   no_exits: "Don't Exits!"
 
   users:
@@ -153,9 +154,28 @@ en:
       text_content: "Content:"
       text_pages: "Pages:"
       text_number_of: "Number Of:"
+      text_count: "Sum Book:"
       text_author: "Author:"
       text_category: "Category:"
       text_publisher: "Publisher:"
+      text_borrow: "Borrow Book"
+
+  borrows:
+    edit:
+      name_page: "Edit Borrow Book"
+      text_button: "Edit Borrow"
+    index:
+      name_page: "List Borrow"
+      default: "<span class='text-primary'>Waiting Response</span>"
+      denied: "<span class='text-muted'>Does not Accept</span>"
+      accepted: "<span class='text-success'>Accept</span>"
+      borrowed: "<span class='text-info'>Borrowed</span>"
+      returned: "<span class='text-secondary'>Returned</span>"
+    new:
+      name_page: "Create Borrow"
+      text_button: "Create!"
+    show:
+      name_page: "Borrow Book"
 
   layouts:
     header:
@@ -171,6 +191,7 @@ en:
       text_setting: "Setting"
       text_logout: "Log Out"
       text_login: "Login"
+      text_borrow: "Show Borrow"
 
   activerecord:
     models:
@@ -179,6 +200,7 @@ en:
       category: "Category"
       book: "Book"
       author: "Author"
+      borrow: "Borrow"
     attributes:
       user:
         name: "Name:"
@@ -207,3 +229,9 @@ en:
         author: "Author:"
         category: "Category:"
         publisher: "Publisher:"
+      borrow:
+        start_date: "Start Date:"
+        end_date: "End Date:"
+        name: "Name:"
+        confirm: "Status:"
+

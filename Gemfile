@@ -36,6 +36,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'config'
 gem 'file_validators'
+gem 'date_validator', '~> 0.9.0'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'

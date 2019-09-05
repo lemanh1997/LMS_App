@@ -1,0 +1,21 @@
+<% provide(:title, t("borrows.index.name_page")) %>
+<h1><%= t("borrows.index.name_page") %></h1>
+
+<ul class="objects">
+  <% @borrows.each do |borrow| %>
+    <li>
+      <div class="left">
+        <%= link_to borrow.book.name, borrow.book %> - 
+        <%= link_to borrow.user.name, borrow.user %>
+      </div>
+      <% if current_user?(borrow.user) %>
+        <%= link_to t(:text_delete), book_borrow_path(borrow.book_id, borrow.user_id), method: :delete, class: "btn right" %>
+      <% end %>
+      <%= link_to t(:text_edit), edit_book_borrow_path(borrow.book_id, borrow.user_id), class: "btn right"%>
+
+      <%= raw t(".#{borrow.status}") %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

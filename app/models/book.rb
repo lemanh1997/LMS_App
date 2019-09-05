@@ -3,6 +3,8 @@ class Book < ApplicationRecord
   belongs_to :category
   belongs_to :publisher
   has_many :comments, dependent: :destroy
+  has_many :borrows, dependent: :destroy
+
   has_many :favorites, as: :favorable, dependent: :destroy
   has_many :users, through: :favorites, dependent: :destroy
 
@@ -30,5 +32,14 @@ class Book < ApplicationRecord
   # giá trị 1 là sách không có nhà sản xuất
   def update_before_destroy_publisher
     update_attribute(:publisher_id, NO_PUBLISHER_ID)
+  end
+
+  def update_borrow_book status
+    case status
+    when Borrow.statuses[:borrowed]    #khi cho muon sach
+      update!(number_of: self.number_of - 1)
+    when Borrow.statuses[:returned]    #khi nhan lai sach
+      update!(number_of: self.number_of + 1)
+    end
   end
 end

@@ -9,6 +9,8 @@ class BooksController < ApplicationController
   def show
     @comments = @book.comments.paginate(page: params[:page], per_page: 5)
     @comment = @book.comments.build
+    # kiểm tra xem sách đã được trả hết chưa
+    @flag = Borrow.check_borrow(current_user.id, @book.id).empty? && @book.number_of > 0
   end
 
   def index

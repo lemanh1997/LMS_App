@@ -59,14 +59,27 @@ end
   publisher_id = rand(1..10)
   Book.create!(name: name, status: status, content: content,
                   author_id: author_id, category_id: category_id,
-                  publisher_id: publisher_id)
+                  publisher_id: publisher_id, number_of: 100, count: 100)
 end
 
 books = Book.order(:created_at).take(6)
 10.times do
   content = Faker::Lorem.sentence(word_count: 3, supplemental: true)
   user_id = rand(1..10)
-  books.each { |book| book.comments.create!(content: content, user_id: user_id) }
+  books.each { |book| 
+    book.comments.create!(content: content, user_id: user_id) 
+    start_date = Time.now + rand(3..100).day
+    end_date = start_date + rand(1..20).day
+    confirm = rand(0..4)
+    if confirm >= 2
+      confirm_at = Time.now + 1.day
+      book.borrows.create!(start_date: start_date, end_date: end_date, user_id: user_id, status: confirm, confirmed_at: confirm_at)
+      book.update(number_of: book.number_of - 1)
+    else
+      book.borrows.create!(start_date: start_date, end_date: end_date, user_id: user_id, status: confirm)
+      book.update(number_of: book.number_of - 1)
+    end
+  }
 end
 
 users = User.all
