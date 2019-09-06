@@ -7,7 +7,7 @@
     <%= form_for(@borrow, url: book_borrow_path(@borrow.book_id, @borrow.user_id), method: :put) do |f| %>
       <%= render "shared/error_messages", object: f.object %>
 
-      <% if current_user?(@borrow.user) %>
+      <% if current_user?(@borrow.user) && @borrow.default? %>
         <%= f.label :start_date %>
         <%= f.date_field :start_date, min: Time.now, value: @borrow.start_date, class: "form-control" %>
 
@@ -27,9 +27,15 @@
       <% if current_user.admin? %>
         <%= f.label :status %>
         <%= f.select :status, @option_status, { selected: @borrow.status, disabled: @borrow.status}, class: "form-control" %>
+      <% else %>
+        <%= hidden_field_tag :status, @borrow.status %>
       <% end %>
-            
-      <%= f.submit yield(:button_name), class: "btn btn-primary" %>
+
+      <% if @option_status.count <= 1 %>
+        <%= f.submit yield(:button_name), disabled: "true", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit yield(:button_name), class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 </div>

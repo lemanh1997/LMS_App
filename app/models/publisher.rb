@@ -4,6 +4,8 @@ class Publisher < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
   validates :address, presence: true, length: { maximum: 100 }
   validates :content, length: { maximum: 200 }
+  scope :search_publisher, -> (name) { where("name LIKE ?", "%#{name}%") }
+
   def name_address_downcase
     self.name = name.downcase
     self.address = address.downcase 

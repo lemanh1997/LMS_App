@@ -17,7 +17,7 @@
 
       <% if current_user.admin? && !current_user?(@user) %>
         <%= f.label :role %>
-        <%= f.select :role, User.role.keys, { selected: @user.role }, class: "form-control" %>
+        <%= f.select :role, User.roles.keys, { selected: @user.role }, class: "form-control" %>
       <% else %>
         <%= hidden_field_tag :role, @user.role %>
       <% end %>

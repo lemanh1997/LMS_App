@@ -10,6 +10,7 @@ class Author < ApplicationRecord
   validates :name, presence: true, length: { maximum: 40 }
   validates :nickname, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
   validates :content, length: { maximum: 200 }
+  scope :search_author, -> (name) { where("name LIKE ?", "%#{name}%") }
 
   def update_book_author
     self.books.each(&:update_before_destroy_author)

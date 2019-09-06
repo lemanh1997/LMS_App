@@ -15,7 +15,15 @@ class PublishersController < ApplicationController
   end
 
   def index
-    @publishers = Publisher.paginate(page: params[:page], per_page: 5)
+    @publisher_search = Publisher.search_publisher(params[:search])
+    @publishers = @publisher_search.paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.xlsx{
+        filename = "Publisher_#{Time.now}"
+        response.headers["Content-Disposition"] = "attachment; filename=#{filename}"
+      }
+    end
   end
   
   def create

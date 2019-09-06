@@ -3,6 +3,8 @@ class Category < ApplicationRecord
   before_save :name_downcase
   validates :name, presence: true, length: { maximum: 40 }, uniqueness: { case_sensitive: false }
   validates :content, length: { maximum: 200 }
+  scope :search_category, -> (name) { where("name LIKE ?", "%#{name}%") }
+
   def name_downcase
     self.name = name.downcase
   end

@@ -59,7 +59,7 @@ end
   publisher_id = rand(1..10)
   Book.create!(name: name, status: status, content: content,
                   author_id: author_id, category_id: category_id,
-                  publisher_id: publisher_id, number_of: 100, count: 100)
+                  publisher_id: publisher_id, number_of: 15, count: 15)
 end
 
 books = Book.order(:created_at).take(6)

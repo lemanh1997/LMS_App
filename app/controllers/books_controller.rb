@@ -14,7 +14,15 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.paginate(page: params[:page], per_page: 5)
+    @book_search = Book.search_book(params[:search])
+    @books = @book_search.paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.xlsx{
+        filename = "Book_#{Time.now}"
+        response.headers["Content-Disposition"] = "attachment; filename=#{filename}"
+      }
+    end
   end
 
   def edit
@@ -22,6 +30,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.count = params[:book][:number_of]
     if @book.save
       flash[:success] = t(:create_complete)
       redirect_to books_path
