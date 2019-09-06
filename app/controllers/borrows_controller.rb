@@ -1,6 +1,7 @@
 class BorrowsController < ApplicationController
   before_action :set_borrow, only: [:update, :edit, :show, :destroy] 
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :check_borrow, only: :update
 
   def new
     @borrow = Borrow.new
@@ -28,9 +29,9 @@ class BorrowsController < ApplicationController
 
   def index
     if current_user.admin?
-      @borrows = Borrow.paginate(page: params[:page], per_page: 10)
+      @borrows = Borrow.search_borrow(params[:search]).paginate(page: params[:page], per_page: 10)
     else
-      @borrows = Borrow.where("user_id = ?", current_user.id).paginate(page: params[:page], per_page: 10)
+      @borrows = Borrow.search_borrow_by_user(params[:search], current_user.id).paginate(page: params[:page], per_page: 10)
     end
   end
 
@@ -77,5 +78,11 @@ class BorrowsController < ApplicationController
 
   def correct_user
     redirect_to root_path unless current_user?(@borrow.user) || current_user.admin?
+  end
+
+  def check_borrow
+    return if params[:borrow].present?
+    flash[:info] = t(:edit_fails)
+    redirect_to "/show_borrow"
   end
 end

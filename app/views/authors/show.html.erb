@@ -5,9 +5,9 @@
       <h1><%= t("authors.show.text_name") %> <%= @author.name %></h1>
       <span>(<%= @author.nickname %>)</span>
       <span>&emsp;&emsp;&emsp;<%= @author.content if @author.content.present? %></span>
-    </section>
-    <section class="stats">
-      <%= link_to t(:text_count_user, count:  @author.users.count), author_followers_path(@author.id), method: :get %>
+      <section class="stats">
+        <%= link_to t(:text_count_user, count:  @author.users.count), author_followers_path(@author.id), method: :get %>
+      </section>
     </section>
     <%= render "follow_form" %>
   </aside>

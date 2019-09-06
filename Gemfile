@@ -37,6 +37,10 @@ gem 'bootstrap-will_paginate'
 gem 'config'
 gem 'file_validators'
 gem 'date_validator', '~> 0.9.0'
+gem 'axlsx_rails'
+gem 'rubyzip'
+gem 'axlsx'
+gem 'axlsx_styler'
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
@@ -52,6 +56,8 @@ group :development, :test do
   # gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'capybara', '>= 2.15'
 end
 
 group :development do
@@ -64,8 +70,9 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
+  gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'

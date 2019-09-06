@@ -1,0 +1,23 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Authors") do |sheet|
+  headers = ["ID", "Name Author", "Nick Name"]
+  width = [10, 30, 30]
+  color = ["00f2ff", "e00413"]
+
+  sheet.add_row headers
+  @author_search.each do |u|
+    sheet.add_row [u.id, u.name, u.nickname]
+  end
+
+  size_table = "A1:C" << @author_search.count
+  size_column_a = "A1:A" << @author_search.count
+  size_column_b = "B1:B" << @author_search.count
+  size_header = "A1:C1"
+
+  sheet.column_widths width[0], width[1], width[2]
+  sheet.add_style size_header, b: true, bg_color: color[0], alignment: { horizontal: :center }
+  sheet.add_style size_column_a, alignment: { horizontal: :center }
+  sheet.add_border size_table
+  sheet.add_border size_header, [:bottom]
+  sheet.add_border size_column_b, [:left, :right]
+end

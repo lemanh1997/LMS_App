@@ -12,7 +12,15 @@ class AuthorsController < ApplicationController
   end
 
   def index
-    @authors = Author.paginate(page: params[:page], per_page: 5)
+    @author_search = Author.search_author(params[:search])
+    @authors = @author_search.paginate(page: params[:page], per_page: 5)
+    respond_to do |format|
+      format.html
+      format.xlsx{
+        filename = "Author_#{Time.now}"
+        response.headers["Content-Disposition"] = "attachment; filename=#{filename}"
+      }
+    end
   end
 
   def edit

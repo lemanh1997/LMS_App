@@ -1,6 +1,10 @@
 <% provide(:title, t("borrows.index.name_page")) %>
 <h1><%= t("borrows.index.name_page") %></h1>
 
+<div class="row">
+  <%= render "search" %>
+</div>
+
 <ul class="objects">
   <% @borrows.each do |borrow| %>
     <li>
@@ -13,7 +17,7 @@
       <% end %>
       <%= link_to t(:text_edit), edit_book_borrow_path(borrow.book_id, borrow.user_id), class: "btn right"%>
 
-      <%= raw t(".#{borrow.status}") %>
+      <%= raw t("borrows.index.#{borrow.status}") %>
     </li>
   <% end %>
 </ul>

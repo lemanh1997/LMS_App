@@ -1,19 +1,13 @@
 <% provide(:title, @book.name) %>
+
+<h1><%= @book.name %></h1>
 <div class="row">
   <aside class="col-md-4">
     <section class="object_info">
-      <h1><%= t("books.show.text_name") %> <%= @book.name %></h1>
-      <h1><%= t("books.show.text_status") %> <%= @book.status %></h1>
-      <h1><%= t("books.show.text_content") %> <%= @book.content if @book.content.present? %></h1>
-      <h1><%= t("books.show.text_pages") %> <%= @book.pages %></h1>
-      <h1><%= t("books.show.text_number_of") %> <%= @book.number_of %></h1>
-      <h1><%= t("books.show.text_count") %> <%= @book.count %></h1>
-      <h1><%= t("books.show.text_author") %> <%= @book.author.name %></h1>
-      <h1><%= t("books.show.text_category") %> <%= @book.publisher.name %></h1>
-      <h1><%= t("books.show.text_publisher") %> <%= @book.category.name %></h1>
-    </section>
-    <section class="stats">
-      <%= link_to t(:text_count_user, count:  @book.users.count), book_followers_path(@book.id), method: :get %>
+      <%= image_tag("book.jpg", alt: "Book", size: "350x330", class: "left") %>
+      <section class="stats">
+        <%= link_to t(:text_count_user, count:  @book.users.count), book_followers_path(@book.id), method: :get %>
+      </section>
     </section>
     <% if @flag %>
       <%= link_to t("books.show.text_borrow"), new_book_borrow_path(@book.id), class: "btn btn-primary borrow" %>
@@ -21,6 +15,17 @@
     <%= render "follow_form" %>
   </aside>
   <div class="col-md-8">
+    <section class="object_info">
+      <h4><%= t("books.show.text_status") %> <%= @book.status %></h4>
+      <h4><%= t("books.show.text_publisher") %> <%= @book.category.name %></h4>
+      <h4><%= t("books.show.text_author") %> <%= @book.author.name %></h4>
+      <h4><%= t("books.show.text_category") %> <%= @book.publisher.name %></h4>
+      <h4><%= t("books.show.text_pages") %> <%= @book.pages %></h4>
+      <h4><%= t("books.show.text_number_of") %> <%= @book.number_of %></h4>
+      <h4><%= t("books.show.text_count") %> <%= @book.count %></h4>
+      <h4><%= t("books.show.text_content") %> <%= @book.content if @book.content.present? %></h4>
+    </section>
+    <br>
     <section class="comment_form">
       <%= render "shared/comment_form" %>
     </section>
